@@ -13,6 +13,8 @@ struct ContentView: View {
             Image(systemName: "flame.fill")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
+            
+            // Ceci est mon prénom 
             Text("Slimane")
         }
         .padding()
