@@ -13,7 +13,7 @@ struct ContentView: View {
             Image(systemName: "flame.fill")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("YOYOYOYO")
+            Text("Slimane")
         }
         .padding()
     }
