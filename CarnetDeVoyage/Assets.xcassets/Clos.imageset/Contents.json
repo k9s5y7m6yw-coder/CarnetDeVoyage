@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "Courtillieres_head.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Clos.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },

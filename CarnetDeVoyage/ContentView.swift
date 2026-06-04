@@ -14,129 +14,58 @@ struct ContentView: View {
         
         
         
-        Text("La carte d'un lieu")
-            .font(.title)
-            .bold()
-            .padding()
-           
-        
-        
-        Text("Le livrable du jour : une carte qui combine image cadrée, overlay (badge), Label, formes, étoiles, et tous les modifiers vus aujourd'hui.")
-            .padding()
-        
-   
-        ScrollView {
-            VStack {
+        NavigationStack {
+            ZStack {
                 
-                VStack (spacing :0){
-                    LinearGradient(colors : [.yellow, .orange, .pink], startPoint: .leading, endPoint :.trailing)
+                
+                VStack {
+                    
+                    
+                    Spacer()
+                    Text ("Apprendre à apprécier l'architecture des cités de France")
+                        .padding()
+                        .multilineTextAlignment(.center)
+                    Spacer()
+                    
+                    List {
                         
-                        .overlay(Image(systemName : "sun.max.fill"))
-                        .foregroundStyle(.white)
-                        .bold()
-                        .font(.largeTitle)
-                        .frame(height: 130)
-                        .overlay(alignment : .topTrailing) {
-                                Label("Visité", systemImage : "checkmark.circle.fill")
-                                .padding(6)
-                                .background(Capsule().fill(.green))
-                                .bold()
-                                .padding(.trailing, 8)
-                                .padding(.top, 8)
-                        }
-                    
-                    Color.stackdeux
-                        .overlay(alignment : .topLeading){
-                        VStack(alignment : .leading){
-                            Text("Lisbonne")
-                                .bold()
-                            Label ("Portugal", systemImage : "map")
-                                .foregroundStyle(.secondary)
-                            HStack {
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star.fill")
+                        Section ("Haut-De-Seine") {
+                            
+                            ForEach(liste.filter {$0.departement == .hautDeSeine}) {  cite in
+                                Carte_Cite(liste : [cite])
                             }
-                            .foregroundStyle(.yellow)
                         }
-                    }
-                   
-                    
                         
-                }
-                .frame(width :.infinity, height : 200)
-                .clipShape(RoundedRectangle(cornerRadius :20))
-                
-                
-                
-                VStack (spacing :0){
-                    LinearGradient(colors : [.green, .cyan], startPoint: .leading, endPoint :.trailing)
-                        .overlay(Image(systemName : "leaf.fill"))
-                        .foregroundStyle(.white)
-                        .bold()
-                        .font(.largeTitle)
-                        .frame(height: 130)
-                    
-                    Color.stackdeux
-                        .overlay(alignment : .topLeading){
-                        VStack(alignment : .leading){
-                            Text("Kyto")
-                                .bold()
-                            Label ("Japon", systemImage : "map")
-                                .foregroundStyle(.secondary)
-                            HStack {
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star")
+                        Section ("Seine-Saint-Denis") {
+                            ForEach(liste.filter {$0.departement == .seineSaintDenis}) {  cite in
+                                Carte_Cite(liste: [cite])
                             }
-                            .foregroundStyle(.yellow)
+                            
+                            
                         }
-                    }
-                }
-                .frame(width :.infinity, height : 200)
-                .clipShape(RoundedRectangle(cornerRadius :20))
-                
-                VStack (spacing :0){
-                    LinearGradient(colors : [.blue,.cyan], startPoint: .leading, endPoint :.trailing)
-                        .overlay(Image(systemName : "snow"))
-                        .foregroundStyle(.white)
-                        .bold()
-                        .font(.largeTitle)
-                        .frame(height: 130)
-                    
-                    Color.stackdeux
-                        .overlay(alignment : .topLeading){
-                        VStack(alignment : .leading){
-                            Text("Rejkavik")
-                                .bold()
-                            Label ("Islande", systemImage : "map")
-                                .foregroundStyle(.secondary)
-                            HStack {
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star.fill")
-                                Image(systemName : "star.fill")
+                        
+                        Section ("Essonne") {
+                            
+                            ForEach(liste.filter {$0.departement == .essonne}) {  cite in
+                                Carte_Cite(liste : [cite])
                             }
-                            .foregroundStyle(.yellow)
                         }
-                    }
-                    
+                        Section ("Yvelines") {
+                            
+                            ForEach(liste.filter {$0.departement == .yvelines}) {  cite in
+                                Carte_Cite(liste: [cite])
+                            }
+                        }
+                        
+                    }.navigationTitle("Visite Cité")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .listStyle(.plain)
                 }
-                .frame(width :.infinity, height : 200)
-                .clipShape(RoundedRectangle(cornerRadius :20))
             }
-            .padding()
         }
-        }
-            
     }
-
-
+}
+        
 #Preview {
     ContentView()
 }
